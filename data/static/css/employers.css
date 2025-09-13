@@ -1,0 +1,552 @@
+@import url('index.css');
+
+/* блок с вакансиями */
+
+.resumes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 60px 40px;
+    max-width: 1180px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.resumes__title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.resumes__description {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.resumes__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.resumes__item {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 20px;
+    /* width: 250px;
+    height: 250px; */
+}
+
+.resumes-card {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    max-width: 250px;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resumes-card__image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.resumes-card__title {
+    font-weight: bold;
+    margin: 0;
+}
+
+.resumes-card__description {
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: grey;
+}
+
+.resumes-card__button {
+    display: block;
+    width: 175px;
+    height: 50px;
+    padding: 10px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.resumes-card__button:hover {
+    background-color: #333;
+}
+
+.resumes-card__button:active {
+    background-color: #3441f0;
+}
+
+/* стили для блока с резюме по определенным профессиям */
+.profession-info {
+    max-width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.profession-info__head {
+    text-align: center;
+    font-size: 21px;
+}
+
+.each-profession__item {
+    display: flex;
+    justify-content: space-between;
+    background: var(--text-color);
+    padding: 20px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 570px;
+}
+
+.profession__content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 15px;
+}
+
+/* Стили для компании и зарплаты */
+.profession__company {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profession__company-name,
+.profession__company-salary {
+    font-size: 16px;
+    color: #000;
+}
+
+.small {
+    font-size: 14px;
+}
+
+/* Стили для деталей вакансии */
+.profession__details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.central {
+    flex: 0 0 25%;
+    /* Центральный элемент занимает 50% ширины контейнера */
+}
+
+.profession__details-item {
+    font-size: 14px;
+    color: #333;
+}
+
+.profession__details-item span {
+    font-style: italic;
+    font-weight: 600;
+}
+
+/* Стили для кнопки */
+.profession__button {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 14px;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    max-height: 55px;
+    transition: background-color 0.3s;
+}
+
+.profession__button:hover {
+    background: darkpurple;
+}
+
+.profession__button:active {
+    background: purple;
+}
+
+.normal {
+    font-style: normal;
+}
+
+/* стили для формы поиска резюме */
+.employer-search-form {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    padding: 30px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 60px;
+}
+
+/* Заголовок формы */
+.employer-search-form__header {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.employer-search-form__title {
+    margin: 0;
+    font-size: 20px;
+}
+
+.employer-search-form__subtitle {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Контент формы */
+.employer-search-form__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Входные поля */
+.employer-search-form__inputs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.employer-search-form__select,
+.employer-search-form__input {
+    padding: 5px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    width: auto;
+    min-width: 150px;
+}
+
+.employer-search-form__select:focus,
+.employer-search-form__input:focus {
+    outline: 2px solid #007bff;
+}
+
+.employer-search-form__button {
+    max-width: 210px;
+    background-color: var(--main-color);
+    margin: 0 auto;
+    color: white;
+    padding: 20px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.employer-search-form__button:hover {
+    background-color: #5c0699;
+    /* При наведении темнее */
+}
+
+
+/* стили для блока добавления вакансии */
+.add-vacancies {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Стили формы */
+.add-vacancies__form {
+    width: 50%;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 40px 50px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 60px;
+}
+
+.add-vacancies__title {
+    font-size: 24pt;
+    font-weight: bold;
+    color: black;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+/* Стили описания */
+.add-vacancies__description {
+    font-size: 14px;
+    text-align: center;
+    margin: 0 0 20px;
+    padding: 10px 50px;
+}
+
+/* Стили для полей ввода */
+.add-vacancies__input,
+.add-vacancies__textarea,
+.add-vacancies__select {
+    width: 100%;
+    min-width: 300px;
+    max-width: 450px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* Стили для группы радио-кнопок */
+.add-vacancies__radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-left: 100px;
+    font-size: 12px;
+}
+
+.add-vacancies__radio-item {
+    display: flex;
+    align-items: center;
+}
+
+.add-vacancies__radio-label {
+    margin-left: 10px;
+}
+
+/* Эффекты при наведении и фокусе */
+.add-vacancies__input:focus,
+.add-vacancies__textarea:focus,
+.add-vacancies__select:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.add-vacancies__input:hover,
+.add-vacancies__textarea:hover,
+.add-vacancies__select:hover {
+    border-color: #555;
+}
+
+/* Стили для кнопки */
+.add-vacancies__button {
+    background-color: purple;
+    color: white;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 30px auto 0;
+    display: block;
+}
+
+.add-vacancies__button:hover {
+    background-color: var(--bg-color);
+}
+
+/* Выравнивание полей ввода */
+.add-vacancies__input-wrapper {
+    text-align: center;
+}
+
+
+
+
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+    .employer-search-form {
+        width: 90%;
+        padding: 20px 0;
+    }
+
+    .employer-search-form__inputs {
+        gap: 15px;
+    }
+
+    .employer-search-form__select,
+    .employer-search-form__input {
+        min-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .employer-search-form {
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .employer-search-form__inputs {
+        flex-direction: column;
+    }
+
+    .employer-search-form__select,
+    .employer-search-form__input {
+        width: 100%;
+    }
+}
+
+/* Валидация форм */
+.employer-search-form__select:invalid,
+.employer-search-form__input:invalid {
+    border-color: red;
+}
+
+/* Стили плейсхолдеров */
+.employer-search-form__select::-ms-expand {
+    display: none;
+}
+
+/* .employer-search-form__select,
+.employer-search-form__input {
+ appearance: none;
+ -webkit-appearance: none;
+ -moz-appearance: none;
+} */
+
+.employer-search-form__select::placeholder,
+.employer-search-form__input::placeholder {
+    color: #999;
+}
+
+
+/*************** Адаптивные стили ******************/
+@media (max-width: 1200px) {
+    .profession__cards {
+        flex-wrap: wrap;
+    }
+
+    .profession__card {
+        flex: 1 1 calc(33.33% - 40px);
+        max-width: 33.33%;
+    }
+}
+
+@media (max-width: 992px) {
+    .profession__cards {
+        gap: 15px;
+    }
+
+    .profession__card {
+        flex: 1 1 calc(50% - 30px);
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .profession__cards {
+        gap: 10px;
+    }
+
+    .profession__card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .profession__card-image {
+        width: 100%;
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .profession__content {
+        padding: 20px;
+    }
+
+    .profession__title {
+        font-size: 20px;
+    }
+
+    .profession__description {
+        font-size: 10px;
+    }
+
+    .profession__card-title {
+        font-size: 12px;
+    }
+
+    .profession__card-text {
+        font-size: 12px;
+    }
+
+    .profession__card-button {
+        width: 150px;
+        height: 50px;
+        font-size: 12px;
+    }
+}
+
+/* адаптив и типографика с информацией по обучающим курсам */
+
+@media (max-width: 768px) {
+    .profession {
+        padding: 20px;
+    }
+
+    .profession__content {
+        flex-direction: column;
+    }
+
+    .profession__details {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profession__company {
+        margin-bottom: 20px;
+    }
+
+    .profession__details {
+        row-gap: 5px;
+    }
+
+    .profession__button {
+        width: 100%;
+        margin-top: 15px;
+    }
+}
+
+/* Дополнительные эффекты */
+.each-profession__item:hover {
+    transform: translateY(-3px);
+    transition: transform 0.3s ease;
+}
+
+.profession__button:active {
+    transform: translateY(2px);
+}
+
+/* Анимации */
+.each-profession__item {
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.each-profession__item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
