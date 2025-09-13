@@ -1,0 +1,345 @@
+:root {
+    --main-color: #5552E8;
+    --text-color: #fff;
+    --bg-color: #5552E8;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+/* установка шрифтов */
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.roboto-semibold {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 15px;
+    /*отступы по бокам для отступа от краёв*/
+}
+
+/* для всех кнопок */
+.button-container {
+    padding: 25px;
+}
+
+
+.job-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+}
+
+.job-selection__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+}
+
+.job-selection__header-head {
+    font-size: 32px;
+}
+
+.courses-block {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 30px 50px;
+    align-items: center;
+}
+
+.courses-block__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.courses-block__header-head {
+    font-size: 28px;
+}
+
+
+.job-selection__button {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* корректировка положения на половину величины x */
+    padding: 15px 30px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 205px;
+    transition: background-color 0.3s;
+}
+
+.job-selection__image {
+    display: flex;
+    position: relative;
+}
+
+.job-selection__image-img {
+    width: 100%;
+    height: auto;
+}
+
+.job-selection__button:hover {
+    background-color: #333;
+}
+
+.job-selection__button:active {
+    background-color: #3441f0;
+}
+
+.courses-block__variants {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.courses-block__variants-item {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 20%;
+    /* каждый блок занимает 20% */
+    position: relative;
+    padding: 15px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    border: solid;
+    color: var(--main-color);
+    gap: 30px;
+}
+
+.courses-block__variants-picture {
+    display: flex;
+    height: 200px;
+    padding: 0px 45px;
+    margin:  15px 0px;
+}
+
+.courses-block__variants-picture img {
+    width: 100%;
+    height: 100%;
+}
+
+.courses-block__variants-item-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px;
+    height: 100%;
+}
+
+.courses-block__variants-title {
+    margin: 0 0 20px;
+    font-size: 24px;
+    /* font-weight: bold; */
+    color: #333;
+}
+
+.courses-block__variants-text {
+    text-align: justify;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.courses-block__variants-item:hover::before {
+    opacity: 0.9;
+}
+
+/*стили для блока header */
+.b-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Логотип */
+.b-header__logo {
+    display: flex;
+    align-items: center;
+}
+
+.b-header__logo-image {
+    width: 100px;
+    height: auto;
+}
+
+/* блок с контактами и кнопкой */
+.b-header__contacts {
+    display: flex;
+    align-items: center;
+    gap:  40px;
+}
+
+.b-header__contacts-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* стили для телефона и текста */
+.b-header__phone {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.b-header__text {
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+}
+
+/* стили для кнопки */
+.b-header__button {
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.b-header__button:hover {
+    background-color: #555;
+}
+
+/* стили для footer */
+.b-footer {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 180px;
+    background-color: #333;
+    color: var(--text-color);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* логотипы */
+.b-footer__logo {
+    display: flex;
+    align-items: center;
+}
+
+.b-footer__logo-image {
+    width: 100%;
+    height: auto;
+}
+
+/* контейнер с навигацией и контактами */
+.b-footer__content {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* Навигация */
+.b-footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.b-footer__nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.b-footer__nav-link:hover {
+    color: var(--bg-color);
+}
+
+/* Контакты */
+.b-footer__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Соцсети */
+.b-footer__social {
+    display: flex;
+    gap: 15px;
+}
+
+.b-footer__social-icon {
+    display: flex;
+    width: 30px;
+    height: 30px;
+}
+
+.b-footer__social-icon img {
+    width: 100%;
+    height: auto;
+}
