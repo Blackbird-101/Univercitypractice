@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+{% if session.get('success_add_vacansy') %}
+<section class="success-add">
+    <div class="success-add__image">
+        <img src="{{url_for('static', filename='images/index/success.png')}}" alt="">
+    </div>
+    <p>{{session.get('message')}}</p>
+    <a href="{{url_for('main.clear_session', session_key='success_add_vacansy')}}" class="success-add__hidden-button">Скрыть</a>
+</section>
+{% endif %}
+
+<section class="job-selection">
+    <div class="job-selection__header">
+        <h1 id="map1" class="job-selection__header-head roboto-bold">
+            JobLink — Трудоустройство и обучение в Москве
+        </h1>
+        <p class="job-selection__header_par">
+            Добро пожаловать на страницу службы занятости населения города Москвы, мы предлагаем простой подбор
+            вакансий для граждан, информацию по трудоустройству, а также банк вакансий для работодателей
+        </p>
+    </div>
+    <div class="job-selection__image">
+        <img src="{{url_for('static', filename='images/index/main_picture.png')}}" alt="Главная картинка" class="job-selection__image-img">
+        <div class="job-selection__button button-container">
+            <a href="{{url_for('main.go_to_page', page_name='job_openings')}}" class="job-selection__button-link">Подбор вакансий</a>
+        </div>
+    </div>
+
+</section>
+<section class="courses-block">
+    <div class="courses-block__header">
+        <h2 class="courses-block__header-head roboto-semibold">
+            Ваш надежный помощник в трудоустройстве
+        </h2>
+        <p class="courses-block__header-par">
+            Компания JobLink предлагает комплексные решения: поиск вакансий, обучение и подбор персонала для
+            Москвы.
+        </p>
+    </div>
+    <div class="courses-block__variants">
+        <a href="{{url_for('main.go_to_page', page_name='job_openings')}}" class="courses-block__variants-item">
+
+            <div class="courses-block__variants-picture">
+                <img src="{{url_for('static', filename='images/index/courses_block_pict1.jpg')}}" alt="">
+            </div>
+
+            <div class="courses-block__variants-item-inner">
+                <h3 id="map2" class="courses-block__variants-title">
+                    Актуальные вакансии Москвы
+                </h3>
+                <p class="courses-block__variants-text">
+                    Начните карьеру с подбора актуальных предложений от работодателей по разным категориям и
+                    проыфессиям, доступным в городе
+                </p>
+            </div>
+        </a>
+        <a href="{{url_for('main.go_to_page', page_name='training_courses')}}" class="courses-block__variants-item">
+
+            <div class="courses-block__variants-picture">
+                <img src="{{url_for('static', filename='images/index/courses_block_pict2.png')}}" alt="">
+            </div>
+
+            <div class="courses-block__variants-item-inner">
+                <h3 id="map3" class="courses-block__variants-title">
+                    Обучающие курсы и программы
+                </h3>
+                <p class="courses-block__variants-text">
+                    Курсы повышения квалификации, обучающие программы и лекции помогут освоить новые навыки и
+                    умения, что даст уверенность в своих знаниях, а также увеличит привлекательность среди
+                    работодателей
+                </p>
+            </div>
+        </a>
+        <a href="{{url_for('main.go_to_page', page_name='employers')}}" class="courses-block__variants-item">
+
+            <div class="courses-block__variants-picture">
+                <img src="{{url_for('static', filename='images/index/courses_block_pict3.jpeg')}}" alt="">
+            </div>
+
+            <div class="courses-block__variants-item-inner">
+                <h3 id="map4" class="courses-block__variants-title">
+                    Работодателям
+                </h3>
+                <p class="courses-block__variants-text">
+                    Банк актуальных резюме позволит найти соискателей на разные должности. Вы можете разместить
+                    свои вакансии здесь
+                </p>
+            </div>
+        </a>
+        <a href="{{url_for('main.go_to_page', page_name='information')}}" class="courses-block__variants-item">
+
+            <div class="courses-block__variants-picture">
+                <img src="{{url_for('static', filename='images/index/courses_block_pict4.jpg')}}" alt="">
+            </div>
+
+            <div class="courses-block__variants-item-inner">
+                <h3 id="map5" class="courses-block__variants-title">
+                    Полезная информация и новости
+                </h3>
+                <p class="courses-block__variants-text">
+                    Полезные материалы, справочная информация, наши контакты, актуальные вопросы по
+                    трудоустройству и новости в сфере занятости
+                </p>
+            </div>
+        </a>
+    </div>
+</section>
+{% endblock %}
