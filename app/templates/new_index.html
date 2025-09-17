@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="b-header">
+            {% if name %}
+                <a href="#" class="b-header__button">{{ name }}</a>
+                <a href="{{ url_for('logout') }}" class="b-header__button">Выйти</a>
+            {% else %}
+                <a href="{{ url_for('auth') }}" class="b-header__button">Войти</a>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <!-- Контент страницы -->
+    </main>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+{% endblock %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+<!-- Форма регистрации -->
+<div class="b-auth-modal">
+
+    <form class="b-auth-modal__form" method="POST" action="{{url_for('main.register', user_type=session['user_type'])}}">
+        {{ form.hidden_tag() }}
+
+        <div class="b-auth-modal__input">
+            {{ form.nickname(placeholder="Введите ник-нейм", class="b-auth-modal__input") }}
+        </div>
+
+        <div class="b-auth-modal__input">
+            {{ form.password(placeholder="Введите пароль", class="b-auth-modal__input") }}
+        </div>
+
+        <div class="b-auth-modal__input">
+            {{ form.confirm_password(placeholder="Повторите пароль", class="b-auth-modal__input") }}
+        </div>
+        {% if error %}
+        <div class="b-auth-modal__error">{{ error }}</div>
+        {% endif %}
+
+        <div class="b-auth-modal__register-fields">
+            {{ form.name(placeholder="Введите имя", class="b-auth-modal__input") }}
+            {{ form.surname(placeholder="Введите фамилию", class="b-auth-modal__input") }}
+            {% if session['user_type'] == 'employer' %}
+            {{ form.company_name(placeholder="Название организации", class="b-auth-modal__input") }}
+            {% endif %}
+        </div>
+
+        
+        <div>
+            <input type="submit" value="Зарегистрироваться" class="b-auth-modal__button">
+        </div>
+
+    </form>
+</div>
+{% endblock %}

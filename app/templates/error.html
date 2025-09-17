@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+{% endblock %}
+{% block title %}Страница не найдена{% endblock %}
+{% block content %}
+<!-- Форма авторизации -->
+<section class="b-not-found">
+    <h1>Страница не найдена</h1>
+    <div class="b-not-found__image">
+        <img src="{{url_for('static', filename='images/index/404.png')}}" alt="Страница не найдена">
+    </div>
+    <a href="{{url_for('main.go_to_page', page_name='index')}}" class="b-not-found__link">На главную</a>
+</section>
+{% endblock %}

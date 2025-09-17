@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+{% endblock %}
+{% block title %}Авторизация{% endblock %}
+{% block content %}
+<!-- Форма авторизации -->
+<div class="b-auth-modal">
+    <div class="b-auth-modal__header">
+        <p>Выберите в качестве кого вы собираетесь авторизоваться</p>
+    </div>
+    <form class="b-auth-modal__form" method="POST" action="{{url_for('main.auth')  if  not error else url_for('main.register', user_type=session['user_type'] ) }}">
+        {{ form.hidden_tag() }}
+
+        <div class="b-auth-modal__radio">
+            {{ form.user_type(class="b-auth-modal__radio-input") }}
+        </div>
+
+        <div class="b-auth-modal__input">
+            {{ form.nickname(placeholder="Введите ник-нейм", class="b-auth-modal__input") }}
+        </div>
+
+        <div class="b-auth-modal__input">
+            {{ form.password(placeholder="Введите пароль", class="b-auth-modal__input") }}
+        </div>
+
+        {% if error %}
+        <div class="b-auth-modal__error">{{ error }}</div>
+        {% endif %}
+
+        <div>
+            <input type="submit" value="Войти" class="b-auth-modal__button">
+        </div>
+
+        <div>
+            <input type="submit" value="Зарегистрироваться" class="b-auth-modal__register-link roboto-bold">
+        </div>
+        
+        <!-- <a href="{{ url_for('main.register', user_type=form.user_type.data) }}" class="b-auth-modal__register-link">Зарегистрироваться</a> -->
+    </form>
+</div>
+{% endblock %}
