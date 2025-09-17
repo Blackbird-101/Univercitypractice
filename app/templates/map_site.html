@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/map_site.css') }}">
+{% endblock %}
+{% block title %}Страница не найдена{% endblock %}
+{% block content %}
+<!-- Форма авторизации -->
+<section class="map-block">
+    <h1>Карта сервиса трудоустройства города Москвы JOBLINK</h1>
+    <div class="map-block__item roboto-regular">
+        <a href="{{url_for('main.go_to_page', page_name='index', _anchor='map1')}}" class="map-block__head-link roboto-bold">Главная</a> <!-- map1 -->
+        <a href="{{url_for('main.go_to_page', page_name='index', _anchor='map2')}}" class="map-block__link">Актуальные вакансии Москвы</a> <!-- map2 -->
+        <a href="{{url_for('main.go_to_page', page_name='index', _anchor='map3')}}" class="map-block__link">Обучающие курсы и программы</a> <!-- map3 -->
+        <a href="{{url_for('main.go_to_page', page_name='index', _anchor='map4')}}" class="map-block__link">Работодателям</a> <!-- map4 -->
+        <a href="{{url_for('main.go_to_page', page_name='index', _anchor='map5')}}" class="map-block__link">Полезная информация и новости</a> <!-- map5 -->
+    </div>
+
+    <div class="map-block__item roboto-regular">
+        <a href="{{url_for('main.go_to_page', page_name='job_openings', _anchor='map6' )}}" class="map-block__head-link roboto-bold">Вакансии</a> <!-- map6 -->
+        <a href="{{url_for('main.go_to_page', page_name='job_openings', _anchor='map7' )}}" class="map-block__link">Популярные категории вакансий</a> <!-- map7 -->
+        <a href="{{url_for('main.go_to_page', page_name='job_openings', _anchor='map8' )}}" class="map-block__link">Идеальная работа рядом с Вами</a> <!-- map8 -->
+        <a href="{{url_for('main.go_to_page', page_name='job_openings', _anchor='map9' )}}" class="map-block__link">Наши надежные партнёры</a> <!-- map9 -->
+        <a href="{{url_for('main.go_to_page', page_name='job_openings', _anchor='map10' )}}" class="map-block__link">Обучающие курсы и программы</a> <!-- map10 -->
+    </div>
+
+    <div class="map-block__item roboto-regular">
+        <a href="{{url_for('main.go_to_page', page_name='training_courses', _anchor='map11' )}}" class="map-block__head-link roboto-bold">Обучение</a> <!-- map11 -->
+        <a href="{{url_for('main.go_to_page', page_name='training_courses', _anchor='map12' )}}" class="map-block__link">Ваш надежный помощник в трудоустройстве</a> <!-- map12 -->
+        <a href="{{url_for('main.go_to_page', page_name='training_courses', _anchor='map13' )}}" class="map-block__link">Курсы от работодателей</a> <!-- map13 -->
+        <a href="{{url_for('main.go_to_page', page_name='training_courses', _anchor='map14' )}}" class="map-block__link">Онлайн школы</a> <!-- map14 -->
+        <a href="{{url_for('main.go_to_page', page_name='training_courses', _anchor='map15' )}}" class="map-block__link">Обучение в ВУЗах</a> <!-- map15 -->
+    </div>
+        <div class="map-block__item roboto-regular">  
+        <a href="{{url_for('main.go_to_page', page_name='information', _anchor='map16' )}}" class="map-block__head-link roboto-bold">Информация</a> <!-- map16 -->
+        <a href="{{url_for('main.go_to_page', page_name='information', _anchor='map17' )}}" class="map-block__link">Центры службы занятости Москвы</a> <!-- map17 -->
+        <a href="{{url_for('main.go_to_page', page_name='information', _anchor='map18' )}}" class="map-block__link">Полезные материалы</a> <!-- map18 -->
+        <a href="{{url_for('main.go_to_page', page_name='information', _anchor='map19' )}}" class="map-block__link">Новости в сфере трудоустройства</a> <!-- map19 -->
+        <a href="{{url_for('main.go_to_page', page_name='information', _anchor='map20' )}}" class="map-block__link">Контакты МУИВ</a> <!-- map20 -->
+    </div>
+        </div>
+        <div class="map-block__item">
+        <a href="{{url_for('main.go_to_page', page_name='error')}}" class="map-block__head-link">Page404</a> <!-- map21 -->
+    </div>
+    <p style="font-size: 12px; color:green">Работа выполнена в рамках задания по эксплуатационной практике студента Гимадеева Артура Магафуровича, специальность "Бизнес-информатика",
+        Московский Университет им. С.Ю.Витте, 2025 год.
+    </p>
+</section>
+{% endblock %}

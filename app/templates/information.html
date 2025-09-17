@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/information.css') }}">
+{% endblock %}
+{% block title %}Информация{% endblock %}
+{% block content %}
+<section id="map16" class="information">
+    <h2>Всё о сфере трудоустройства</h2>
+    <p>Будь в курсе последних изменений на рынке труда, в тренде последних вакансий и гигантов в сфере
+        обеспечения
+        населения рабочими местами</p>
+
+    <div class="information__block-container">
+        <div class="information__item">
+            <img src="{{url_for('static', filename='images/information/information_pict1.jpg')}}" alt="Изображение 1">
+            <p id="map17" class="text-content roboto-bold">Центры службы занятости Москвы</p>
+        </div>
+
+        <div class="information__item">
+            <img src="{{url_for('static', filename='images/information/information_pict2.jpeg')}}" alt="Изображение 2">
+            <p id="map18" class="text-content roboto-bold">Полезные материалы</p>
+        </div>
+
+        <div class="information__item">
+            <img src="{{url_for('static', filename='images/information/information_pict3.jpeg')}}" alt="Изображение 2">
+            <p id="map19" class="text-content roboto-bold">Новости в сфере трудоустройства</p>
+        </div>
+
+    </div>
+
+    <div class="information__details czn-contacts">
+        <div class="information__details-text"></div>
+        <div class="information__details-list">
+            <ul>
+                <li>Отдел "Куркино", Новокуркинское ш. д.1 тел. 8(495)705-75-75</li>
+                <li>Отдел "Косино-Ухтомский", ул. Святоозерская д.12 тел. 8(495)705-75-75</li>
+                <li>Отдел "Мещанский", Сивцев Вражек д.20 тел. 8(495)705-75-75</li>
+                <li>Отдел "Пресненский", ул. Б.Декабрьская д.13 тел. 8(495)705-75-75</li>
+                <li>Отдел "Беговой", ул. Правды д.33 тел. 8(495)705-75-75</li>
+                <li>Отдел "Дмитровский", ул. Лобненская д.4а тел. 8(495)705-75-75</li>
+                <li>Отдел "Тимирязевский", ул. Тимирязевская, д.8 к. 1 тел. 8(495)705-75-75</li>
+                <li>Отдел "Бибирево", ул. Мелиховская д.4а тел. 8(495)705-75-75</li>
+                <li>Отдел "Марьина роща", 17-й проезд Марьиной Рощи д.4 к.1 тел. 8(495)705-75-75</li>
+                <li>Отдел "Марфино", Гостиничный проезд д.6а тел. 8(495)705-75-75</li>
+            </ul>
+        </div>
+    </div>
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <div class="information__details czn-info">
+        <div class="information__details-text"></div>
+        <div class="information__details-list">
+            <ul>
+                <li><a href="https://rating.hh.ru/poll?utm_source=hh.ru&utm_medium=referral&utm_campaign=from_footer_new" target="_blank" rel="noopener noreferrer">Рейтинг работодателей России. Голосование за лучших работодателей 2025 года
+начнётся 1 октября</a></li>
+                <li><a href="https://profi.ru/buhgaltery_i_yuristy/pomosch-v-poiske-raboty/?srsltid=AfmBOoo6PqWA2wmJWM5sy6_AjW39Pb-ytniTyMPsVHKlLP8qdMg8u1vi" target="_blank" rel="noopener noreferrer">Помощь в поиске работы в городе Москва</a></li>
+                <li><a href="https://career.business.russpass.ru/">Биржа вакансий в туризме Москвы</a></li>
+            </ul>
+        </div>
+    </div>
+        <div class="information__details czn-news">
+        <div class="information__details-text"></div>
+        <div class="information__details-list">
+            <ul>
+                <li><a href="https://hh.ru/article/rynok-truda-v-2025-godu-pochemu-stalo-trudnee-iskat-rabotu" target="_blank" rel="noopener noreferrer">Рынок труда в 2025 году: почему стало труднее искать работу</a></li>
+                <li><a href="https://s-pro.group/tpost/zdan27hlu1-rinok-truda-v-moskve-2025-analiz-situats" target="_blank" rel="noopener noreferrer">Где в Москве больше всего востребован линейный персонал?</a></li>
+                <li><a href="https://www.gazeta.ru/social/news/2025/03/07/25253096.shtml" target="_blank" rel="noopener noreferrer">В 2025 году найти новую работу планируют 60% жителей Москвы</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="contacts">
+    <div class="contacts__map">
+        <img src="{{url_for('static', filename='images/information/map_picture.png')}}" alt="Карта МУИВ">
+    </div>
+
+    <div id="map20" class="contacts__info">
+        <h2 class="contacts__title">Контакты МУИВ</h2>
+        <div class="contacts__phone">8(800)550-03-63</div>
+        <div class="contacts__email">
+            <a href="https://www.muiv.ru/about/contacts/?utm_source=google.com&utm_medium=organic&utm_campaign=google.com&utm_referrer=google.com"
+                target="_blank" rel="noopener noreferrer">info@muiv.ru</a>
+        </div>
+        <div class="contacts__address">
+            115432, г.Москва, 2-й Кожуховский проезд 12, стр. 1
+        </div>
+        <button class="contacts__button">
+            <img src="{{url_for('static', filename='images/information/button_pict.png')}}" alt="Телефон"
+                class="contacts__button-icon">
+            Написать нам...
+        </button>
+    </div>
+</section>
+<section class="send-messages send-messages_hidden">
+    <div class="send-messages__wrapper">
+        <div class="send-messages__text">
+            Если у Вас остались вопросы или имеются предложения в работе сайта, просьба направить по данной
+            форме
+        </div>
+        <form class="send-messages__form roboto-regular" action="{{url_for('main.send_message')}}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="text" class="send-messages__input send-messages__input_name" placeholder="ФИО" required>
+            <input type="email" class="send-messages__input send-messages__input_email" placeholder="Email" required>
+            <input type="tel" class="send-messages__input send-messages__input_phone" placeholder="Номер телефона"
+                required>
+            <textarea class="send-messages__textarea" placeholder="Текст сообщения" required></textarea>
+            <button type="submit" class="send-messages__button-submit">Отправить</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/training_courses.css') }}">
+{% endblock %}
+{% block title %}Обучение и курсы{% endblock %}
+{% block content %}
+<section id="map11" class="courses">
+    <div class="courses__content">
+        <div class="courses__intro">
+            <h2 id="map12" class="courses__title roboto-bold">Ваш надежный помощник в трудоустройстве</h2>
+            <p class="courses__description">Компания JobLink предлагает комплексные решения: поиск вакансий,
+                обучение и подбор персонала для Москвы</p>
+        </div>
+
+        <div class="courses__cards">
+            <div class="courses__card">
+                <div class="courses__card-image">
+                    <img src="{{url_for('static', filename='/images/training_courses/courses_pict1.png')}}" alt="">
+                </div>
+                <h3 id="map13" class="courses__card-title roboto-bold">Курсы от работодателей</h3>
+                <p class="courses__card-text">Практические занятия и рекомендации для успешного поиска работы в
+                    Москве.</p>
+                <a href="{{url_for('main.show_courses', course_type='Курсы от работодателей')}}" class="courses__card-button">Подробно</a>
+            </div>
+
+            <div class="courses__card">
+                <div class="courses__card-image">
+                    <img src="{{url_for('static', filename='/images/training_courses/courses_pict2.png')}}" alt="">
+                </div>
+                <h3 id="map14" class="courses__card-title roboto-bold">Онлайн-школы</h3>
+                <p class="courses__card-text">Освойте новые навыки для продвижения по карьерной лестнице в
+                    кратчайшие сроки.</p>
+                <a href="{{url_for('main.show_courses', course_type='Онлайн-школы')}}" class="courses__card-button">Подробно</a>
+            </div>
+
+            <div class="courses__card">
+                <div class="courses__card-image">
+                    <img src="{{url_for('static', filename='/images/training_courses/courses_pict3.png')}}" alt="">
+                </div>
+                <h3 id="map15" class="courses__card-title roboto-bold">Обучение в ВУЗах</h3>
+                <p class="courses__card-text">Совершенствование профессиональных навыков с преподавателями
+                    лучших ВУЗов столицы</p>
+                <a href="{{url_for('main.show_courses', course_type='Обучение в ВУЗах')}}" class="courses__card-button">Подробно</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% if find_courses %}
+
+<section class="courses-info">
+    <p class="courses-info__head roboto-semibold">{{course_type}}</p>
+    {% for course in find_courses %}
+    <div class="each-courses__item">
+        <!-- <div class="vacancies__content"> -->
+        <div class="courses__company">
+            <div class="courses__company-title roboto-bold">{{course.course_name}}</div>
+            <div class="courses__company-salary roboto-semibold">{{str(int(course.cost)) + ' ₽' if course.cost != 'Бесплатно' else course.cost }}</div>
+        </div>
+
+        <div class="courses__details central">
+            <p class="courses__details-item"><span style="margin-right: 20px;">Направление:</span> {{course.direction}}</p>
+            <p class="courses__details-item"><span style="margin-right: 20px;">Дни занятий:</span>{{course.days}}</p>
+            <p class="courses__details-item"><span style="margin-right: 20px;">Время занятий:</span>{{course.time}}</p>
+            <p class="courses__details-item"><span style="margin-right: 20px;">Формат занятий:</span>{{course.type}}</p>
+            <p class="courses__details-item"><span style="margin-right: 20px;">Стоимость:</span>{{course.cost}}</p>
+            <p class="courses__details-item"><span style="margin-right: 20px;">Педагог:</span>{{course.teacher}}</p>
+        </div>
+
+        <button class="courses__button">Записаться</button>
+        <!-- </div> -->
+    </div>
+    {% endfor %}
+
+
+
+</section>
+
+{% endif %}
+
+{% endblock %}

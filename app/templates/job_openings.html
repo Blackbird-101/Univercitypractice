@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/job_opening.css') }}">
+{% endblock %}
+{% block title %}Вакансии{% endblock %}
+{% block content %}
+<section id="map6" class="vacancies">
+
+    <div>
+        <h2 id="map7" class="vacancies__title">Популярные категории вакансий</h2>
+        <p class="vacancies__description">Лучшие предложения работы в разных сферах</p>
+    </div>
+
+    <div class="vacancies__list">
+        {% for key, value in vacancies.items() %}
+        <div class="vacancies__item">
+            <div class="vacancy-card">
+                <img class="vacancy-card__image"
+                    src="{{url_for('static', filename='images/job_opening/vacancies/{}.png'.format(value[0]))}}"
+                    alt="Фотография профессии">
+                <h3 class="vacancy-card__title">{{key}}</h3>
+                <p class="vacancy-card__description">{{value[1]}}</p>
+                <a href="{{url_for('main.show_vacancy', position=key)}}" class="vacancy-card__button">Найти работу</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- блок кода для поиска ваканий через специальную форму  -->
+<div class="form-wrapper">
+    <form action="{{url_for('main.go_to_page', page_name='index')}}" method="post" class="search-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <h1 id="map8" class="search-form__title">Идеальная работа рядом с Вами</h1>
+        <p class="search-form__description">поиск вакансий по профессиям и параметрам</p>
+        <div class="search-form__fields">
+            <select name="position" class="search-form__field search-form__field_required" required>
+                <option value="">Профессия*</option>
+                {% for position in vacancies.keys() %}
+                <option value="{{position}}">{{position}}</option>
+                {% endfor %}
+            </select>
+            <select name="company_name" class="search-form__field">
+                <option value="">Фирма</option>
+                {% for company_name in all_companyies %}
+                <option value="{{company_name}}">{{company_name}}</option>
+                {% endfor %}
+            </select> <select name="employment_type" class="search-form__field search-form__field_required" required>
+                <option value="">Занятость*</option>
+                <option value="Полная">Полная</option>
+                <option value="Частичная">Частичная</option>
+                <option value="Удаленная">Удаленная</option>
+            </select>
+            <input type="number" name="salary" class="search-form__field" placeholder="Заработная пл.">
+            <select name="experience" class="search-form__field">
+                <option value="">Стаж работы</option>not-required
+                <option value="Обязателен">Обязателен</option>
+                <option value="Не обязателен">Не обязателен</option>
+            </select> <button type="submit" class="search-form__button">Найти вакансию</button>
+        </div>
+    </form>
+</div>
+
+<!-- Блок с результами поиска вакансий -->
+{% if find_vacancyes %}
+<section class="find-vacancies">
+
+    {% for vacancy in find_vacancyes %}
+    <div class="each-vacancies__item">
+        <div class="vacancies__company">
+            <div class="vacancies__company-title roboto-bold">{{vacancy.company_name}}</div>
+            <div class="vacancies__company-salary roboto-semibold">от {{int(vacancy.salary)}} ₽</div>
+        </div>
+
+        <div class="vacancies__details central">
+            <p class="vacancies__details-item"><span style="margin-right: 20px;">Должность:</span>{{vacancy.position}}
+            </p>
+            <p class="vacancies__details-item"><span style="margin-right: 20px;">График
+                    работы:</span>{{vacancy.work_schedule | translate_days}}</p>
+            <p class="vacancies__details-item"><span
+                    style="margin-right: 20px;">Занятость:</span>{{vacancy.employment_type}}</p>
+            <p class="vacancies__details-item"><span style="margin-right: 20px;">Требования к
+                    стажу:</span>{{vacancy.experience_required}}</p>
+            <p class="vacancies__details-item"><span style="margin-right: 20px;">Гарантии
+                    работодателя:</span>{{vacancy.employer_guarantees}}</p>
+            <p class="vacancies__details-item"><span
+                    style="margin-right: 20px;">Дополнительно:</span>{{vacancy.additional_info}}</p>
+            <p class="vacancies__details-item"><span style="margin-right: 20px;">Контакты:</span>{{vacancy.email}}
+                {{vacancy.phone}}</p>
+        </div>
+
+        <button class="vacancies__button">Подать заявку</button>
+        <!-- </div> -->
+    </div>
+    {% endfor %}
+
+
+    {% elif find_vacancyes == [] %}
+    <div class="each-vacancies__item not-found">
+
+        <div class="vacancies__company">
+            <img src="{{url_for('static', filename='images/job_opening/vacancy_not_found.jpg')}}"
+                alt="vacancy_not_found.jpg" class="vacancies__not-found-img">
+        </div>
+
+        <div class="vacancies__details central">
+            <p class="vacancies__details-item">По Вашему запросу вакансии не найдены...</p>
+
+        </div>
+
+        <button class="not-found_button">Понятно</button>
+
+    </div>
+    {% endif %}
+
+</section>
+
+
+
+
+<!-- Форма с лолготипами партнеров -->
+<section id="map9" class="partners">
+    <div class="partners__content">
+        <h2 class="partners__title">Наши надежные партнеры</h2>
+        <p class="partners__description">
+            На нашем портале предоставлены вакансии множества компаний, от маленьких организаций до крупных
+            корпораций, наверняка Вы найдете что-то ценное именно для Вас
+        </p>
+    </div>
+
+    <div class="partners__logos">
+        {% for vacancy in all_companyies %}
+        <div class="partners__logo-item">
+            <a href="">
+                <img src="{{url_for('static', filename='/images/job_opening/logo_folder/{}'.format(associate_logo[vacancy]))}}"
+                    alt="{{vacancy}}">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="tooltip" id="tooltip"></div>
+</section>
+
+<section id="map10" class="education">
+    <div class="education__content">
+        <p class="education__content-title roboto-semibold">
+            Обучающие курсы и программы
+        </p>
+        <p class="education__content-text roboto-light">
+            Курсы повышения квалификации, обучающие программы и лекции помогут освоить новые навыки и умения,
+            что даст уверенность в своих знаниях, а также увеличит привлекательность среди работодателей
+        </p>
+        <a href="{{url_for('main.go_to_page', page_name='training_courses')}}" class="education__content-button">Подробнее</a>
+    </div>
+    <div class="education__image">
+        <img src="{{url_for('static', filename='images/job_opening/education_pict.png')}}" alt="" class="education__image-img">
+    </div>
+
+</section>
+{% endblock %}

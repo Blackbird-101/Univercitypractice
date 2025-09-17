@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/employers.css') }}">
+{% endblock %}
+{% block title %}Работодателям{% endblock %}
+{% block content %}
+
+<section class="resumes">
+
+    <div>
+        <h2 class="resumes__title">К Вашим услугам банк соискателей</h2>
+        <p class="resumes__description">Потенциальные работники по самым востребованным профессиям уже ждут
+            Вас...</p>
+    </div>
+
+
+    <div class="resumes__list">
+        {% for key, value in vacancies.items() %}
+        <div class="resumes__item">
+            <div class="resumes-card">
+                <img class="resumes-card__image"
+                    src="{{url_for('static', filename='images/job_opening/vacancies/{}.png'.format(value[0]))}}"
+                    alt="Фотография профессии">
+                <h3 class="resumes-card__title">{{key}}</h3>
+                <p class="resumes-card__description">{{get_info_of_resumes(all_resumes, key)[1]}} резюме<br>Соискатели в
+                    возрасте от <span class="min_age">{{get_info_of_resumes(all_resumes, key)[2]}}</span> до <span
+                        class="max-age">{{get_age_string(get_info_of_resumes(all_resumes, key)[3], 'genitive')}}</span>
+                </p>
+                <a href="{{url_for('main.show_resume', position=key)}}" class="resumes-card__button">Просмотреть</a>
+                <!-- <button class="resumes-card__button">Просмотреть</button> -->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Блок кода с результатами отображения вакансий по каждой профессии -->
+
+{% if resumes_of_position %}
+<p class="profession-info__head roboto-semibold"> Оставленные резюме по профессии
+    <span>{{resumes_of_position[0].position}}</span>
+</p>
+<section class="profession-info">
+
+    {% for resume in resumes_of_position %}
+    <div class="each-profession__item">
+        <!-- <div class="vacancies__content"> -->
+        <div class="profession__company">
+            <!-- <div class="profession__company-title roboto-bold">МенеджПРО</div>
+                    <div class="profession__company-salary roboto-semibold">1500 ₽</div> -->
+            <div class="profession__company-name roboto-bold">{{resume.name}} {{resume.surname}} <span
+                    class="age">{{get_age_string(resume.age, 'nominative')}}</span><br><span
+                    class="address roboto-regular small">г. Москва
+                    {{resume.region}}</span></div>
+            <div class="profession__company-experience roboto-semibold small"><span class="experience-text">Стаж
+                    в аналогичных должностях:</span><br><span
+                    class="experience-value roboto-regular">{{resume.experience}}</span></div>
+            <div class="profession__company-bad habits roboto-semibold small">Вредные привычки:<span
+                    class="roboto-regular">{{resume.habits if resume.habits else 'Нет'}}</span></div>
+        </div>
+
+        <div class="profession__details central">
+            <p class="profession__details-item"><span class="tit">О себе:</span><br><span class="about roboto-regular"
+                    style="font-style: normal; font-weight: 300;">{{resume.about_me if resume.about_me else
+                    'Отсутствует'}}</span></p>
+            <p class="profession__details-item"><span class="tit">Email:</span><br><span class="email roboto-regular"
+                    style="font-style: normal; font-weight: 300;">{{resume.email}}</span></p>
+            <p class="profession__details-item"><span class="tit">Телефон:</span><br><span
+                    class="phone roboto-regular">{{resume.phone}}</span></p>
+        </div>
+
+        <button class="profession__button">Написать</button>
+    </div>
+    {% endfor %}
+
+</section>
+{% endif %}
+
+{% if not session.get('find_resume_flag') %}
+<section class="employer-search-form">
+    <div class="employer-search-form__header">
+        <h2 class="employer-search-form__title">Возможно на Вашу вакансию уже есть достойный кандидат</h2>
+        <p class="employer-search-form__subtitle">поиск сотрудников по банку соискателей</p>
+    </div>
+    <form class="employer-search-form__content" action="{{url_for('main.find_resume_by_params')}}" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="employer-search-form__inputs">
+            <select class="employer-search-form__select" name="profession" required>
+                <option value="">Профессия*</option>
+                {% for position, value in vacancies.items() %}
+                <option value="{{position}}">{{position}}</option>
+                {% endfor %}
+            </select>
+
+            <input class="employer-search-form__input" type="number" name="age_from" min="1" max="70"
+                placeholder="Возраст (от)">
+
+            <input class="employer-search-form__input" type="number" name="age_to" min="1" max="70"
+                placeholder="Возраст (до)">
+
+            <select class="employer-search-form__select" name="region">
+
+                <option value="">Регион</option>position
+                {% for region in all_regions %}
+                <option value="{{region}}">{{region}}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+
+        <button class="employer-search-form__button" type="submit">Найти резюме</button>
+    </form>
+</section>
+{% endif %}
+
+{% if find_resumes %}
+<p class="profession-info__head roboto-semibold"> По указанным Вами параметрам найдены следующие соискатели в профессии
+    <span>{{find_resumes[0].position}}</span>
+</p>
+<section class="profession-info">
+
+    {% for resume in find_resumes %}
+    <div class="each-profession__item">
+        <!-- <div class="vacancies__content"> -->
+        <div class="profession__company">
+            <!-- <div class="profession__company-title roboto-bold">МенеджПРО</div>
+                    <div class="profession__company-salary roboto-semibold">1500 ₽</div> -->
+            <div class="profession__company-name roboto-bold">{{resume.name}} {{resume.surname}} <span
+                    class="age">{{get_age_string(resume.age, 'nominative')}}</span><br><span
+                    class="address roboto-regular small">г. Москва
+                    {{resume.region}}</span></div>
+            <div class="profession__company-experience roboto-semibold small"><span class="experience-text">Стаж
+                    в аналогичных должностях:</span><br><span
+                    class="experience-value roboto-regular">{{resume.experience}}</span></div>
+            <div class="profession__company-bad habits roboto-semibold small">Вредные привычки:<span
+                    class="roboto-regular">{{resume.habits if resume.habits else 'Нет'}}</span></div>
+        </div>
+
+        <div class="profession__details central">
+            <p class="profession__details-item"><span class="tit">О себе:</span><br><span class="about roboto-regular"
+                    style="font-style: normal; font-weight: 300;">{{resume.about_me if resume.about_me else
+                    'Отсутствует'}}</span></p>
+            <p class="profession__details-item"><span class="tit">Email:</span><br><span class="email roboto-regular"
+                    style="font-style: normal; font-weight: 300;">{{resume.email}}</span></p>
+            <p class="profession__details-item"><span class="tit">Телефон:</span><br><span
+                    class="phone roboto-regular">{{resume.phone}}</span></p>
+        </div>
+
+        <button class="profession__button">Написать</button>
+    </div>
+    {% endfor %}
+
+</section>
+{% endif %}
+
+{% if find_resumes == [] %}
+<div class="each-profession__item not-found ">
+
+    <div class="vacancies__details central add_selector">
+        <div class="profession__company">
+            <img src="{{url_for('static', filename='images/job_opening/vacancy_not_found.jpg')}}"
+                alt="vacancy_not_found.jpg" class="resumes__not-found-img">
+        </div>
+        <p class="vacancies__details-item">По Вашему запросу соискателей не найдено...</p>
+
+        <button class="not-found_button">Понятно</button>
+    </div>
+
+
+
+</div>
+{% endif %}
+
+
+
+{% if session.get('user_type') == 'employer' %}
+<section class="add-vacancies">
+    <form class="add-vacancies__form" action="{{url_for('main.add_new_vacansi')}}" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <h2 class="add-vacancies__title">Даёшь рабочие места</h2>
+        <p class="add-vacancies__description">Привлеките в свою компанию новых сотрудников, найдите
+            студентов для подработки или прохождения практики на Вашем
+            предприятии, опубликуйте вакансию у нас на сайте прямо сейчас</p>
+
+        <div class="add-vacancies__input-wrapper">
+            <input type="text" class="add-vacancies__input" name="position" placeholder="Профессия*" required>
+            <input type="text" class="add-vacancies__input" name="post" placeholder="Должность*" required>
+            <input type="number" class="add-vacancies__input" name="cost" placeholder="Заработная плата (руб.)*" required>
+
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <label for="choise">Выберите рабочие дни*</label>
+                <select class="add-vacancies__select" name="choise" id="choise" multiple size="2" required>
+                    <option value="пн">пн</option>
+                    <option value="вт">вт</option>
+                    <option value="ср">ср</option>
+                    <option value="чт">чт</option>
+                    <option value="пт">пт</option>
+                    <option value="сб">сб</option>
+                    <option value="вс">вс</option>
+                    <option value="пн-пт">пн-пт</option>
+                </select>
+            </div>
+
+            <div class="add-vacancies__radio-group">
+                <div class="add-vacancies__radio-item">
+                    <input type="radio" value="Полная" id="full" name="employment" class="add-vacancies__radio" required>
+                    <label for="full" class="add-vacancies__radio-label">полная</label>
+                </div>
+                <div class="add-vacancies__radio-item">
+                    <input type="radio" value="Частичная" id="part" name="employment" class="add-vacancies__radio">
+                    <label for="part" class="add-vacancies__radio-label">частичная</label>
+                </div>
+                <div class="add-vacancies__radio-item">
+                    <input type="radio" id="remote" value="Удаленная" name="employment" class="add-vacancies__radio">
+                    <label for="remote" class="add-vacancies__radio-label">удаленная</label>
+                </div>
+            </div>
+
+            <select class="add-vacancies__select" name="experience" required>
+                <option value="">Стаж работы*</option>
+                <option value="Не обязателен">Не обязателен</option>
+                <option value="от 1 года">от 1 года</option>
+                <option value="от 2 лет">от 2 лет</option>
+                <option value="от 3 лет">от 3 лет</option>
+                <option value="от 4 лет">от 4 лет</option>
+                <option value="от 5 лет">от 5 лет</option>
+            </select>
+            <textarea class="add-vacancies__textarea" name="employer_guarantees" placeholder="Гарантии"></textarea>
+            <textarea class="add-vacancies__textarea" name="additional_info" placeholder="Дополнительно"></textarea>
+            <input type="email" class="add-vacancies__input" name="email" placeholder="Email*" required>
+            <input type="tel" class="add-vacancies__input" name="phone" placeholder="Телефон*" required>
+
+            <button type="submit" class="add-vacancies__button">Опубликовать вакансию</button>
+        </div>
+    </form>
+</section>
+{% endif %}
+
+{% endblock %}

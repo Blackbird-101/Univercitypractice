@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    {% block extra_styles %} {% endblock %} <!-- Блок для переопределения стилей -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>{% block title %}Базовый шаблон {% endblock %}</title>
+</head>
+
+<body>
+    <main class="roboto-regular">
+        <header class="b-header">
+            <div class="b-header__logo">
+                <a href="{{url_for('main.go_to_page', page_name='map_site')}}"><img src="{{url_for('static', filename='images/header/logo.svg')}}" alt="" class="b-header__logo-img"></a>
+            </div>
+            <div class="b-header__contacts">
+                <div class="b-header__contacts-info">
+                    <div class="b-header__text">
+                        Менеджер на связи
+                    </div>
+                    <div class="b-header__phone">
+                        +7(495)-123-45-67
+                    </div>
+                </div>
+                <!-- <button class="b-header__button">
+                    Войти
+                </button> -->
+                {% if name %}
+                <a href="#" class="b-header__button">{{ name }}</a>
+                <a href="{{ url_for('main.logout') }}" class="b-header__button">Выйти</a>
+                {% else %}
+                <a href="{{ url_for('main.auth') }}" class="b-header__button">Войти</a>
+                {% endif %}
+
+            </div>
+        </header>
+        {% block content %}{% endblock %}
+        <footer class="b-footer">
+            <div class="b-footer__logo">
+                <img src="{{url_for('static', filename='images/header/logo.svg')}}" alt="Логотип"
+                    class="b-footer__logo-image">
+            </div>
+            <div class="b-footer__content">
+                <div class="b-footer__nav">
+                    <a href="{{url_for('main.go_to_page', page_name='index')}}" class="b-footer__nav-link">Главная</a>
+                    <a href="{{url_for('main.go_to_page', page_name='job_openings')}}"
+                        class="b-footer__nav-link">Вакансии</a>
+                    <a href="{{url_for('main.go_to_page', page_name='training_courses')}}"
+                        class="b-footer__nav-link">Обучение</a>
+                    <a href="{{url_for('main.go_to_page', page_name='information')}}" class="b-footer__nav-link">Информация</a>
+                    <a href="{{url_for('main.go_to_page', page_name='employers')}}" class="b-footer__nav-link">Работодателям</a>
+                </div>
+                <div class="b-footer__contacts">
+                    <div class="b-footer__phone">
+                        8(800)-345-78-56
+                    </div>
+                    <a href="mailto:joblink@support.ry" class="b-footer__email">joblink@support.ru</a>
+                </div>
+                <div class="b-footer__social">
+                    <div class="b-footer__social-icon">
+                        <img src="{{url_for('static', filename='images/index/telegram.svg')}}" alt="telegram-logo">
+                    </div>
+                    <div class="b-footer__social-icon">
+                        <img src="{{url_for('static', filename='images/index/whatsapp.svg')}}" alt="whatsapp-logo">
+                    </div>
+                    <div class="b-footer__social-icon">
+                        <img src="{{url_for('static', filename='images/index/max.svg')}}" alt="max-logo">
+                    </div>
+                </div>
+            </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/job_openings.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popup_window.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/hidden.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
