@@ -178,11 +178,11 @@
 }
 
 .profession__button:hover {
-    background: darkpurple;
+    background: darkorchid;
 }
 
 .profession__button:active {
-    background: purple;
+    background: var(--main-color);
 }
 
 .normal {
@@ -354,7 +354,7 @@
 
 /* Стили для кнопки */
 .add-vacancies__button {
-    background-color: purple;
+    background-color: var(--main-color);
     color: white;
     padding: 20px 40px;
     border: none;
