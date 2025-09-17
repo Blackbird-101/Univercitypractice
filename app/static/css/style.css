@@ -1,0 +1,76 @@
+/* Стили для формы авторизации */
+.b-auth-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.b-auth-modal__header {
+    text-align: center;
+    margin-bottom: 30%;
+}
+
+.b-auth-modal__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.b-auth-modal__input {
+    width: 80%;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.b-auth-modal__radio {
+    margin: 20px 0;
+}
+
+.b-auth-modal__button {
+    background-color: #9b59b6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.b-auth-modal__button:hover {
+    background-color: #8e44ad;
+}
+
+.b-auth-modal__error {
+    color: red;
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.b-auth-modal__register-link {
+    text-decoration: none;
+    color: #9b59b6;
+    margin-top: 20px;
+}
+
+.b-auth-modal__register-link:hover {
+    text-decoration: underline;
+}
+
+/* Стили для полей регистрации */
+.b-auth-modal__register-fields {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.b-auth-modal__register-fields.active {
+    display: flex;
+}
