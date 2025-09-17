@@ -1,0 +1,685 @@
+:root {
+    --main-color: #5552E8;
+    --text-color: #fff;
+    --bg-color: #5552E8;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+/* установка шрифтов */
+
+.roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.roboto-semibold {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 15px;
+    /*отступы по бокам для отступа от краёв*/
+}
+
+/* для всех кнопок */
+.button-container {
+    padding: 25px;
+}
+
+
+.job-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+}
+
+.job-selection__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+}
+
+.job-selection__header-head {
+    font-size: 32px;
+}
+
+.courses-block {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 30px 50px;
+    align-items: center;
+}
+
+.courses-block__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.courses-block__header-head {
+    font-size: 28px;
+}
+
+
+.job-selection__button {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* корректировка положения на половину величины x */
+    padding: 15px 30px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 205px;
+    transition: background-color 0.3s;
+}
+
+.job-selection__image {
+    display: flex;
+    position: relative;
+}
+
+.job-selection__image-img {
+    width: 100%;
+    height: auto;
+}
+
+.job-selection__button:hover {
+    background-color: #333;
+}
+
+.job-selection__button:active {
+    background-color: #3441f0;
+}
+
+.courses-block__variants {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.courses-block__variants-item {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 20%;
+    /* каждый блок занимает 20% */
+    position: relative;
+    padding: 15px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    border: solid;
+    color: var(--main-color);
+    gap: 30px;
+}
+
+.courses-block__variants-picture {
+    display: flex;
+    height: 200px;
+    padding: 0px 45px;
+    margin: 15px 0px;
+}
+
+.courses-block__variants-picture img {
+    width: 100%;
+    height: 100%;
+}
+
+.courses-block__variants-item-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px;
+    height: 100%;
+}
+
+.courses-block__variants-title {
+    margin: 0 0 20px;
+    font-size: 24px;
+    /* font-weight: bold; */
+    color: #333;
+}
+
+.courses-block__variants-text {
+    text-align: justify;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.courses-block__variants-item:hover::before {
+    opacity: 0.9;
+}
+
+/*стили для блока header */
+.b-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #333;
+    color: #fff;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Логотип */
+.b-header__logo {
+    display: flex;
+    align-items: center;
+}
+
+.b-header__logo-image {
+    width: 100px;
+    height: auto;
+}
+
+/* блок с контактами и кнопкой */
+.b-header__contacts {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.b-header__contacts-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* стили для телефона и текста */
+.b-header__phone {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.b-header__text {
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+}
+
+/* стили для кнопки */
+.b-header__button {
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.b-header__button:hover {
+    background-color: #555;
+}
+
+/* стили для footer */
+.b-footer {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #333;
+    color: var(--text-color);
+    padding: 30px;
+    box-sizing: border-box;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.success-add {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    max-width: 70%;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.success-add:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.success-add__image {
+    display: flex;
+    align-items: center;
+    width: 150px;
+}
+
+.success-add__image img {
+    width: 100%;
+    height: auto;
+}
+
+.success-add__hidden-button {
+    display: flex;
+    padding: 15px 30px;
+    background-color: var(--main-color);
+    border-radius: 8px;
+    color: var(--text-color);
+}
+
+.success-add__hidden-button:hover {
+    background-color: #333;
+}
+
+.success-add__hidden-button:active {
+    background-color: #3441f0;
+}
+
+
+/* логотипы */
+.b-footer__logo {
+    display: flex;
+    align-items: center;
+}
+
+.b-footer__logo-image {
+    width: 100%;
+    height: auto;
+}
+
+/* контейнер с навигацией и контактами */
+.b-footer__content {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* Навигация */
+.b-footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.b-footer__nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.b-footer__nav-link:hover {
+    color: var(--bg-color);
+}
+
+/* Контакты */
+.b-footer__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Соцсети */
+.b-footer__social {
+    display: flex;
+    gap: 15px;
+}
+
+.b-footer__social-icon {
+    display: flex;
+    width: 30px;
+    height: 30px;
+}
+
+.b-footer__social-icon img {
+    width: 100%;
+    height: auto;
+}
+
+/* Стили для формы авторизации */
+.b-auth-modal {
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin:35px auto;
+}
+
+.b-auth-modal__header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.b-auth-modal__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.b-auth-modal__input {
+    width: 80%;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.b-auth-modal__radio {
+    margin: 20px 0;
+}
+
+.b-auth-modal__button {
+    background-color: var(--main-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.b-auth-modal__button:hover {
+    background-color: var(--main-color);
+}
+
+.b-auth-modal__error {
+    color: red;
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.b-auth-modal__register-link {
+    text-decoration: none;
+    color: var(--main-color);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: solid 1px var(--main-color);
+    cursor: pointer;
+}
+
+.b-auth-modal__register-link:hover {
+    text-decoration: underline;
+}
+
+/* Стили для полей регистрации */
+.b-auth-modal__register-fields {
+    width: 80%;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.b-auth-modal__register-fields.active {
+    display: flex;
+}
+
+.b-not-found {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 60px auto;
+    align-items: center;
+}
+
+.b-not-found__image {
+    display: flex;
+    align-items: center;
+    width: 333px;
+    height: auto;
+}
+
+.b-not-found__image img {
+    width: 100%;
+    height: auto;
+}
+
+.b-not-found__link {
+    display: flex;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: var(--main-color);
+    color: var(--text-color);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 40px;
+}
+
+.b-not-found__link:hover {
+    background-color: darkblue;
+}
+
+
+@media (min-width: 545px) and (max-width: 960px) {
+    /* стили для средних экранов */
+    .courses-block__variants {
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .courses-block__variants-picture img {
+        width: 60%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .b-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .b-footer__content {
+        gap: 45px;
+    }
+
+    .b-footer__content {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 545px) {
+    .courses-block__variants {
+        flex-direction: column;
+    }
+
+    .b-header {
+        padding: 10px;
+    }
+
+    .b-header__logo {
+        width: 30px;
+    }
+    
+    .b-header__logo a img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .b-header__button {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .b-header__text {
+        font-size: 10px;
+    }
+
+    .b-header__phone {
+        font-size: 11px;
+    }
+
+    .job-selection__header {
+        padding: 30px;
+    }
+    .job-selection__header-head {
+        font-size: 24px;
+    }
+
+    .job-selection__header_par {
+        font-size: 12px;
+    }
+
+    .b-header__contacts {
+        gap:10px;
+        flex-direction: column;
+    }
+
+    .job-selection__button {
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 14px;
+        width: unset;
+    }
+
+    .courses-block {
+        padding: 30px;
+    }
+
+    .courses-block__header-head {
+        font-size: 24px;
+    }
+
+    .courses-block__header-par {
+        font-size: 12px;
+    }
+
+    .courses-block__variants-picture {
+        padding: 5px;
+        height: auto;
+    }
+
+    .courses-block__variants-item {
+        gap: 10px;
+    }
+
+    .courses-block__variants-title {
+        font-size: 18px;
+    }
+
+    .courses-block__variants-text {
+        font-size: 14px;
+    }
+
+    .courses-block__variants-item-inner {
+        padding: 15px 10px;
+    }
+
+    .b-footer {
+        font-size: 10px;
+        flex-direction: column;
+        gap:10px;
+        align-items: center;
+    }
+
+    .b-footer__content {
+        gap:20px;
+    }
+
+    .b-footer__nav-link {
+        font-size: 12px;
+    }
+
+    .b-footer__social-icon img {
+        width: 75%;
+    }
+
+    .b-footer__social {
+        gap: 5px;
+    }
+
+    .success-add {
+        flex-direction: column;
+    }
+
+    .success-add p {
+        font-size: 12px;
+    }
+
+    .success-add__hidden-button {
+        font-size: 12px;
+    }
+
+    .b-auth-modal {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .b-auth-modal__header {
+        font-size: 14px;
+    }
+
+    .b-auth-modal__input {
+        width: 95%;
+        margin: 10px 0;
+    }
+}
